@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  redis:
+    image: redis:4.0.5-alpine
+    hostname: redis
+    networks:
+      - apps
+  app:
+    build: .
+    image: io.stiefel/app
+    ports:
+    - 8080:8080/tcp
+    deploy:
+      replicas: 3
+    depends_on:
+      - redis
+    networks:
+      - apps
+    environment:
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+networks:
+  apps:

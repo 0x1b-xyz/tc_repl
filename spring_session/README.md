@@ -1,0 +1,1 @@
+Uses Redis and Spring Session

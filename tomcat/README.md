@@ -1,0 +1,1 @@
+Need to setup: https://stackoverflow.com/questions/33623311/how-to-setup-a-spring-boot-application-with-embedded-tomcat-session-clustering
