@@ -21,6 +21,13 @@ case $1 in
         echo "Ok now we round robin ..."
         watch -d ${CURL}
         exit 0;;
+    get)
+        while true; do
+            ${CURL}
+            echo
+            sleep 2
+        done
+        exit 0;;
     *)
         echo "Building an starting ${STACK} ...";;
 esac
